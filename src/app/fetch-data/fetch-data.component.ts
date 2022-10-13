@@ -7,18 +7,18 @@ import { environment } from 'src/environments/environment';
   templateUrl: './fetch-data.component.html'
 })
 export class FetchDataComponent {
-  public forecasts: WeatherForecast[] = [];
+  public testbreaks: BikeListing[] = [];
 
   constructor(http: HttpClient) {
-    http.get<WeatherForecast[]>(environment.baseUrl + 'WeatherForecast/GetWeatherForecast').subscribe(result => {
-      this.forecasts = result;
+    http.get<BikeListing[]>(environment.baseUrl + 'BikeList/GetBikeList').subscribe(result => {
+      this.testbreaks = result;
     }, error => console.error(error));
   }
 }
 
-interface WeatherForecast {
+interface BikeListing {
   date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
+  lowEndPrice: number;
+  highEndPrice: number;
+  bikes: string;
 }
